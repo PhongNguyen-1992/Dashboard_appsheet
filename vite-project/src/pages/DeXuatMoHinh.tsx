@@ -1,7 +1,7 @@
 import PageShell from "../components/PageShell";
 
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbx43i-hnCdcYsqOVCsUa1w9vIsOpfTdi9Rqug7jW3ozwjcuLWH1a4ar92-Gt6-GleD4/exec";
+  "https://script.google.com/macros/s/AKfycbwOmMj3Hoe4rsV8MEyMf1F2ILdSSvj0PM9oeaPhiOEJXqptbjYHPSLCCcHvSzbUJ_TI/exec";
 
 export default function DeXuatMoHinh() {
   return (
