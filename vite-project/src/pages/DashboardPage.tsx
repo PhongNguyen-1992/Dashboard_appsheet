@@ -1,7 +1,7 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbzg5xOyR70lKPXCpQ0P9GRgypqn8bmpKua18uMx-PMR-LqDS8J4WrubfMQDXn4bXxentQ/exec";
+  "https://script.google.com/macros/s/AKfycbwxVeniECDg1dAdsKiXn-8M9YViEQ96NMsm_TGTRKUJaQJbEmeo-b3fRjjVS4bZhDIEWA/exec";
 
-export default function DeXuatMoHinh() {
+export default function DashboardPage() {
   return (
     <iframe
       src={FORM_URL}
