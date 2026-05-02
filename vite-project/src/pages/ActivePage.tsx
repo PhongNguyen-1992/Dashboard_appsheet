@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxvw5Fo-UEQ4Dnrfapv2WpJsxVSeYPsqywA8S7Ae9NVW2OwDw21vPeKD9mCVsO6OOY8/exec";
+  "https://script.google.com/macros/s/AKfycbztGxLOimHH8siPo4NPhlYNVOs_8rtFOknlNyJPw5uumWpbNDxcMeB0146oeulnJ2W1/exec";
 
 export default function ActivePage() {
   return (
