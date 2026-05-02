@@ -7,8 +7,8 @@ import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
 import MonitorHeartRoundedIcon from '@mui/icons-material/MonitorHeartRounded';
 import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import FactCheckRoundedIcon from '@mui/icons-material/FactCheckRounded';
-import Inventory2RoundedIcon from '@mui/icons-material/Inventory2Rounded';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 interface NavItem {
   id: RouteId;
@@ -25,7 +25,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "recare",     label: "Recare TK-BT",       section: "nghiep-vu", icon: <MonitorHeartRoundedIcon /> },
   { id: "khongxuly",  label: "Không Xử Lý",        section: "nghiep-vu", icon: <BlockRoundedIcon /> },
   { id: "xacminh",   label: "Xác minh",            section: "nghiep-vu", icon: <FactCheckRoundedIcon /> },
-  { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <Inventory2RoundedIcon /> },
+  { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <ManageSearchIcon /> },
   { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
 ];
 
