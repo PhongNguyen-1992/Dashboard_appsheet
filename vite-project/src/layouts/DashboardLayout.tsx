@@ -12,6 +12,7 @@ import DeXuatMoHinh from "../pages/DeXuatMoHinh";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import Khongxuly from "../pages/KhongxulyPage";
+import ActivePage from "../pages/ActivePage";
 
 // ✅ FIX: thêm capthietbi
 export type RouteId =
@@ -22,7 +23,9 @@ export type RouteId =
   | "recare"
   | "xacminh"
   | "tonkho"
-  | "thongke";
+  | "thongke"
+  | "activenet";
+
 
 interface Props {
   user: User;
@@ -38,7 +41,8 @@ const PAGE_MAP = {
   xacminh: <XacMinhPage />,
   tonkho: <TonKhoPage />,
   thongke: <ThongKePage />,
-  khongxuly: <Khongxuly/>
+  khongxuly: <Khongxuly/>,
+  activenet: <ActivePage />,
 } satisfies Record<RouteId, React.ReactNode>;
 
 // ✅ label chuẩn
@@ -51,6 +55,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   xacminh: "Xác minh",
   tonkho: "Tồn kho",
   thongke: "Thống kê",
+  activenet: "Active Net",
 };
 
 export default function DashboardLayout({ user, onLogout }: Props) {
