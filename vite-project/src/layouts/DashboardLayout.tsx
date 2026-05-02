@@ -11,11 +11,13 @@ import DeXuatMoHinh from "../pages/DeXuatMoHinh";
 
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
+import Khongxuly from "../pages/KhongxulyPage";
 
 // ✅ FIX: thêm capthietbi
 export type RouteId =
   | "dashboard"
   | "capthietbi"
+  | "khongxuly"
   | "capdo"
   | "recare"
   | "xacminh"
@@ -36,13 +38,15 @@ const PAGE_MAP = {
   xacminh: <XacMinhPage />,
   tonkho: <TonKhoPage />,
   thongke: <ThongKePage />,
+  khongxuly: <Khongxuly/>
 } satisfies Record<RouteId, React.ReactNode>;
 
 // ✅ label chuẩn
 export const ROUTE_LABELS: Record<RouteId, string> = {
-  dashboard: "Dashboard",
+  dashboard: "Tổng Quan Nhân Sự",
   capthietbi: "Đề Xuất Thiết Bị",
-  capdo: "Đề nghị cấp đồ",
+  khongxuly: "Không Xử Lý",
+  capdo: "Đề Nghị Cấp Đồ",
   recare: "Recare",
   xacminh: "Xác minh",
   tonkho: "Tồn kho",
