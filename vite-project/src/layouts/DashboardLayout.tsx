@@ -13,7 +13,7 @@ import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import Khongxuly from "../pages/KhongxulyPage";
 import ActivePage from "../pages/ActivePage";
-
+import SwapPage from "../pages/SwapPage";
 // ✅ FIX: thêm capthietbi
 export type RouteId =
   | "dashboard"
@@ -24,6 +24,7 @@ export type RouteId =
   | "xacminh"
   | "tonkho"
   | "thongke"
+  | "swapwf6"
   | "activenet";
 
 
@@ -43,6 +44,7 @@ const PAGE_MAP = {
   thongke: <ThongKePage />,
   khongxuly: <Khongxuly/>,
   activenet: <ActivePage />,
+  swapwf6: <SwapPage />, // tạm dùng lại capdo cho swapwf6
 } satisfies Record<RouteId, React.ReactNode>;
 
 // ✅ label chuẩn
@@ -56,6 +58,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   tonkho: "Tồn kho",
   thongke: "Thống kê",
   activenet: "Active Net",
+  swapwf6: "SWAP WF6",
 };
 
 export default function DashboardLayout({ user, onLogout }: Props) {

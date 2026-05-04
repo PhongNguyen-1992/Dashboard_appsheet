@@ -24,6 +24,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "capdo",      label: "Cấp Đổi CCDC",      section: "nghiep-vu", icon: <SwapHorizRoundedIcon /> },
   { id: "recare",     label: "Recare TK-BT",       section: "nghiep-vu", icon: <MonitorHeartRoundedIcon /> },
   { id: "khongxuly",  label: "Không Xử Lý",        section: "nghiep-vu", icon: <BlockRoundedIcon /> },
+  { id: "swapwf6",  label: "Swap WIFI6",        section: "nghiep-vu", icon: <SwapHorizRoundedIcon /> },
   { id: "xacminh",   label: "Xác minh",            section: "nghiep-vu", icon: <FactCheckRoundedIcon /> },
   { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <ManageSearchIcon /> },
   { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
