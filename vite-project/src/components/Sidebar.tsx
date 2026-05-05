@@ -15,7 +15,7 @@ interface NavItem {
   label: string;
   badge?: number;
   icon: React.ReactElement;
-  section: "nghiep-vu" | "he-thong";
+  section: "nghiep-vu" | "he-thong" | "phan-tich";
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -28,6 +28,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "xacminh",   label: "Xác minh",            section: "nghiep-vu", icon: <FactCheckRoundedIcon /> },
   { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <ManageSearchIcon /> },
   { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
+  { id: "ton",   label: "Tồn Triển Khai Bảo Trì",           section: "phan-tich",  icon: <BarChartRoundedIcon /> },
 ];
 
 interface Props {
@@ -42,7 +43,7 @@ interface Props {
 export default function Sidebar({ active, open, user, onNavigate, onToggle, onLogout }: Props) {
   const nghiepVu = NAV_ITEMS.filter(n => n.section === "nghiep-vu");
   const heThong  = NAV_ITEMS.filter(n => n.section === "he-thong");
-
+const phanTich  = NAV_ITEMS.filter(n => n.section === "phan-tich");
   return (
     <div style={{
       width: open ? 220 : 56,
@@ -97,6 +98,9 @@ export default function Sidebar({ active, open, user, onNavigate, onToggle, onLo
         <div style={{ marginTop: 8 }}>
           <NavSection label="Hệ thống" open={open} items={heThong} active={active} onNavigate={onNavigate} />
         </div>
+        <div style={{ marginTop: 8 }}>
+  <NavSection label="Phân tích" open={open} items={phanTich} active={active} onNavigate={onNavigate} /> {/* ✅ thêm */}
+</div>
       </div>
 
       {/* Footer */}

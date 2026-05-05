@@ -5,7 +5,6 @@ import DashboardPage from "../pages/DashboardPage";
 import CapDoPage from "../pages/CapDoPage";
 import RecarePage from "../pages/RecarePage";
 import XacMinhPage from "../pages/XacMinhPage";
-import TonKhoPage from "../pages/TonKhoPage";
 import ThongKePage from "../pages/ThongKePage";
 import DeXuatMoHinh from "../pages/DeXuatMoHinh";
 
@@ -14,15 +13,16 @@ import Topbar from "../components/Topbar";
 import Khongxuly from "../pages/KhongxulyPage";
 import ActivePage from "../pages/ActivePage";
 import SwapPage from "../pages/SwapPage";
+import TonTKBTPage from "../pages/TonTKBTPage.tsx";
 // ✅ FIX: thêm capthietbi
 export type RouteId =
   | "dashboard"
   | "capthietbi"
   | "khongxuly"
+  | "ton"
   | "capdo"
   | "recare"
-  | "xacminh"
-  | "tonkho"
+  | "xacminh" 
   | "thongke"
   | "swapwf6"
   | "activenet";
@@ -40,7 +40,7 @@ const PAGE_MAP = {
   capdo: <CapDoPage />,
   recare: <RecarePage />,
   xacminh: <XacMinhPage />,
-  tonkho: <TonKhoPage />,
+  ton: <TonTKBTPage />,
   thongke: <ThongKePage />,
   khongxuly: <Khongxuly/>,
   activenet: <ActivePage />,
@@ -55,7 +55,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   capdo: "Đề Nghị Cấp Đồ",
   recare: "Recare",
   xacminh: "Xác minh",
-  tonkho: "Tồn kho",
+  ton: "Tồn Triển Khai/Bảo Trì",
   thongke: "Thống kê",
   activenet: "Active Net",
   swapwf6: "SWAP WF6",
