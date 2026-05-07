@@ -5,18 +5,19 @@ import type { User } from "../App";
 
 interface Props {
   label: string;
+  section: string;
   user: User;
   onLogout: () => void;
 }
 
-export default function Topbar({ label, user, onLogout }: Props) {
+export default function Topbar({ label, section, user, onLogout }: Props) {
   return (
     <Box sx={{
       height: 50, bgcolor: "#fff", borderBottom: "0.5px solid #e4e2dc",
       display: "flex", alignItems: "center", px: 2.5, gap: 1, flexShrink: 0,
     }}>
       <Breadcrumbs separator={<NavigateNextRoundedIcon sx={{ fontSize: 14, color: "#ccc" }} />}>
-        <Typography sx={{ fontSize: 13, color: "#aaa" }}>Nghiệp vụ</Typography>
+        <Typography sx={{ fontSize: 13, color: "#aaa" }}>{section}</Typography>
         <Typography sx={{ fontSize: 13, fontWeight: 600, color: "#1a1a2e" }}>{label}</Typography>
       </Breadcrumbs>
 

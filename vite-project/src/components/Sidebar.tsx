@@ -9,6 +9,7 @@ import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import FactCheckRoundedIcon from '@mui/icons-material/FactCheckRounded';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import { DynamicFormRounded } from "@mui/icons-material";
 
 interface NavItem {
   id: RouteId;
@@ -28,6 +29,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "xacminh",   label: "Xác minh",            section: "nghiep-vu", icon: <FactCheckRoundedIcon /> },
   { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <ManageSearchIcon /> },
   { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
+  { id: "data",   label: "Import/Xuất Data",           section: "phan-tich",  icon: <DynamicFormRounded /> },
   { id: "ton",   label: "Tồn Triển Khai Bảo Trì",           section: "phan-tich",  icon: <BarChartRoundedIcon /> },
 ];
 

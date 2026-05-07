@@ -7,58 +7,72 @@ import RecarePage from "../pages/RecarePage";
 import XacMinhPage from "../pages/XacMinhPage";
 import ThongKePage from "../pages/ThongKePage";
 import DeXuatMoHinh from "../pages/DeXuatMoHinh";
-
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import Khongxuly from "../pages/KhongxulyPage";
 import ActivePage from "../pages/ActivePage";
 import SwapPage from "../pages/SwapPage";
 import TonTKBTPage from "../pages/TonTKBTPage.tsx";
-// ✅ FIX: thêm capthietbi
+import DataPage from "../pages/DataPage.tsx";
+
 export type RouteId =
   | "dashboard"
   | "capthietbi"
   | "khongxuly"
   | "ton"
+  | "data"
   | "capdo"
   | "recare"
-  | "xacminh" 
+  | "xacminh"
   | "thongke"
   | "swapwf6"
   | "activenet";
-
 
 interface Props {
   user: User;
   onLogout: () => void;
 }
 
-// ✅ FIX: map đầy đủ + đúng key
 const PAGE_MAP = {
-  dashboard: <DashboardPage />,
+  dashboard:  <DashboardPage />,
   capthietbi: <DeXuatMoHinh />,
-  capdo: <CapDoPage />,
-  recare: <RecarePage />,
-  xacminh: <XacMinhPage />,
-  ton: <TonTKBTPage />,
-  thongke: <ThongKePage />,
-  khongxuly: <Khongxuly/>,
-  activenet: <ActivePage />,
-  swapwf6: <SwapPage />, // tạm dùng lại capdo cho swapwf6
+  capdo:      <CapDoPage />,
+  recare:     <RecarePage />,
+  xacminh:    <XacMinhPage />,
+  ton:        <TonTKBTPage />,
+  data:       <DataPage />,
+  thongke:    <ThongKePage />,
+  khongxuly:  <Khongxuly />,
+  activenet:  <ActivePage />,
+  swapwf6:    <SwapPage />,
 } satisfies Record<RouteId, React.ReactNode>;
 
-// ✅ label chuẩn
 export const ROUTE_LABELS: Record<RouteId, string> = {
-  dashboard: "Tổng Quan Nhân Sự",
-  capthietbi: "Đề Xuất Thiết Bị",
-  khongxuly: "Không Xử Lý",
-  capdo: "Đề Nghị Cấp Đồ",
-  recare: "Recare",
-  xacminh: "Xác minh",
-  ton: "Tồn Triển Khai/Bảo Trì",
-  thongke: "Thống kê",
-  activenet: "Active Net",
-  swapwf6: "SWAP WF6",
+  dashboard:  "Tổng Quan Nhân Sự",
+  capthietbi: "Đề Xuất Thiết Bị",
+  khongxuly:  "Không Xử Lý",
+  capdo:      "Đề Nghị Cấp Đồ",
+  recare:     "Recare",
+  xacminh:    "Xác minh",
+  ton:        "Tồn Triển Khai/Bảo Trì",
+  thongke:    "Thống kê",
+  activenet:  "Active Net",
+  swapwf6:    "SWAP WF6",
+  data:       "Import/Xuất Data",
+};
+
+const ROUTE_SECTION: Record<RouteId, string> = {
+  dashboard:  "Nghiệp vụ",
+  capthietbi: "Nghiệp vụ",
+  capdo:      "Nghiệp vụ",
+  recare:     "Nghiệp vụ",
+  khongxuly:  "Nghiệp vụ",
+  swapwf6:    "Nghiệp vụ",
+  xacminh:    "Nghiệp vụ",
+  activenet:  "Hệ thống",
+  thongke:    "Hệ thống",
+  data:       "Phân tích",
+  ton:        "Phân tích",
 };
 
 export default function DashboardLayout({ user, onLogout }: Props) {
@@ -66,14 +80,12 @@ export default function DashboardLayout({ user, onLogout }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        fontFamily: "'Be Vietnam Pro', sans-serif",
-        background: "#f5f4f1",
-      }}
-    >
+    <div style={{
+      display: "flex",
+      height: "100vh",
+      fontFamily: "'Be Vietnam Pro', sans-serif",
+      background: "#f5f4f1",
+    }}>
       <Sidebar
         active={route}
         open={sidebarOpen}
@@ -83,16 +95,15 @@ export default function DashboardLayout({ user, onLogout }: Props) {
         onLogout={onLogout}
       />
 
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
-        }}
-      >
+      <div style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}>
         <Topbar
           label={ROUTE_LABELS[route]}
+          section={ROUTE_SECTION[route]}
           user={user}
           onLogout={onLogout}
         />
