@@ -10,7 +10,7 @@ export default function TonTKBTPage() {
         border: "none",
         display: "block",
       }}
-      title="Form đề nghị cấp đồ"
+      title="Tồn Triển Khai Và Bảo Trì"
     />
   );
 }
