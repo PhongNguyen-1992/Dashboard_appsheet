@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxaAzruz6QfEXR5nYoD6BPTFkDDQY-eY0zhFu0WD97ImsRjnwR2hJBDO4Mgiwg64b4/exec";
+  "https://script.google.com/macros/s/AKfycbwNQTPkTbN7YnZmgQ-uuOAHosCAJX7XadG0CI1IfLXARsCK5izNZcF_15RX4M_WTlM/exec";
 
 export default function ProgressPage() {
   return (
