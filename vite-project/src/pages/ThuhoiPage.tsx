@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbw1A-wD4JBpLSjqEPapkZFSPXDMx_u2Rj7dRkMJPh5bTY-plfkR_kY1eXAVpHuhsxErsw/exec";
+  "https://script.google.com/macros/s/AKfycbzAk5mlYNcAHLdHJQvJ3bH35Tur6scS5oWJu-IJPbYhiVSXMrb4UGuML3Fero5wuhvFMw/exec";
 
 export default function ThuHoiPage() {
   return (
