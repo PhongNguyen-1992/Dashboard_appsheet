@@ -8,6 +8,7 @@ import MonitorHeartRoundedIcon from '@mui/icons-material/MonitorHeartRounded';
 import BlockRoundedIcon from '@mui/icons-material/BlockRounded';
 import FactCheckRoundedIcon from '@mui/icons-material/FactCheckRounded';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
+import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import { DynamicFormRounded } from "@mui/icons-material";
 
@@ -31,6 +32,8 @@ const NAV_ITEMS: NavItem[] = [
   { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
   { id: "data",   label: "Import/Xuất Data",           section: "phan-tich",  icon: <DynamicFormRounded /> },
   { id: "ton",   label: "Tồn Triển Khai Bảo Trì",           section: "phan-tich",  icon: <BarChartRoundedIcon /> },
+  { id: "thuhoi",   label: "Thu Hồi Thiết Bị",           section: "phan-tich",  icon: <AssignmentReturnIcon/> },
+
 ];
 
 interface Props {

@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbwdreXiPiEq0BHtFK0XXsp6wN7C_idUuIgeCGH11piHbfDUq5ntewqHK3XjAPd9Ce0R/exec";
+  "https://script.google.com/macros/s/AKfycbyu9g56F8eNGiDayUbRapYplXRa6yBL_lp2Y7CzeQLIVBMoZoMyEZq9YvHAWmdLzLQG/exec";
 
 export default function DeXuatMoHinh() {
   return (
