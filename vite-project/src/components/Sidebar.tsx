@@ -10,6 +10,7 @@ import FactCheckRoundedIcon from '@mui/icons-material/FactCheckRounded';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import AssignmentReturnIcon from '@mui/icons-material/AssignmentReturn';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import { DynamicFormRounded } from "@mui/icons-material";
 
 interface NavItem {
@@ -33,6 +34,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "data",   label: "Import/Xuất Data",           section: "phan-tich",  icon: <DynamicFormRounded /> },
   { id: "ton",   label: "Tồn Triển Khai Bảo Trì",           section: "phan-tich",  icon: <BarChartRoundedIcon /> },
   { id: "thuhoi",   label: "Thu Hồi Thiết Bị",           section: "phan-tich",  icon: <AssignmentReturnIcon/> },
+  { id: "tiendo",   label: "Ranking Tiến Độ",           section: "phan-tich",  icon: <TimelineIcon/> },
 
 ];
 

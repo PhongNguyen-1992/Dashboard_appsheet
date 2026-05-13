@@ -15,6 +15,7 @@ import SwapPage from "../pages/SwapPage";
 import TonTKBTPage from "../pages/TonTKBTPage.tsx";
 import DataPage from "../pages/DataPage.tsx";
 import ThuHoiPage from "../pages/ThuhoiPage.tsx";
+import ProgressPage from "../pages/ProgressPage.tsx";
 
 export type RouteId =
   | "dashboard"
@@ -28,6 +29,7 @@ export type RouteId =
   | "thongke"
   | "swapwf6"
   | "thuhoi"
+  | "tiendo"
   | "activenet";
 
 interface Props {
@@ -48,6 +50,7 @@ const PAGE_MAP = {
   activenet:  <ActivePage />,
   swapwf6:    <SwapPage />,
   thuhoi:    <ThuHoiPage />,
+  tiendo:    <ProgressPage />,
 } satisfies Record<RouteId, React.ReactNode>;
 
 export const ROUTE_LABELS: Record<RouteId, string> = {
@@ -62,6 +65,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   activenet:  "Active Net",
   swapwf6:    "SWAP WF6",
   thuhoi:    "Thu Hồi Thiết Bị",
+  tiendo:    "KPIs Tiến Độ Ranking",
   data:       "Import/Xuất Data",
 };
 
@@ -78,6 +82,7 @@ const ROUTE_SECTION: Record<RouteId, string> = {
   data:       "Phân tích",
   ton:        "Phân tích",
    thuhoi:        "Phân tích",
+   tiendo:        "Phân tích",
 };
 
 export default function DashboardLayout({ user, onLogout }: Props) {
