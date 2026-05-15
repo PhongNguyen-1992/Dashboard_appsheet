@@ -73,7 +73,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   thuhoi:    "Thu Hồi Thiết Bị",
   tiendo:    "KPIs Tiến Độ Ranking",
   chatluong:    "KPIs Chất Lượng Ranking",
-  csat:    "KPIs Chất Lượng Ranking",
+  csat:    "KPIs CSAT & HiFPT Ranking",
   data:       "Import/Xuất Data",
 };
 
