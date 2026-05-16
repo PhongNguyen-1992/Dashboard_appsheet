@@ -19,6 +19,7 @@ import ProgressPage from "../pages/ProgressPage.tsx";
 import VerifiedPage from "../pages/VerifiedPage.tsx";
 import CsatPage from "../pages/CsatPage.tsx";
 import KPIOverview from "../pages/KPIOverview.tsx";
+import HRPage from "../pages/HRPage.tsx";
 
 export type RouteId =
   | "dashboard"
@@ -34,7 +35,7 @@ export type RouteId =
   | "thuhoi"
   | "tiendo"
   | "chatluong"
-  | "csat"| "overview"
+  | "csat"| "overview"| "hr"
   | "activenet";
 
 interface Props {
@@ -59,6 +60,7 @@ const PAGE_MAP = {
   chatluong:    <VerifiedPage />,
   overview:    <KPIOverview />,
   csat:    <CsatPage />,
+  hr:    <HRPage />,
 } satisfies Record<RouteId, React.ReactNode>;
 
 export const ROUTE_LABELS: Record<RouteId, string> = {
@@ -78,6 +80,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   csat:    "KPIs CSAT & HiFPT Ranking",
   data:       "Import/Xuất Data",
   overview:   "Tổng Quan KPIs",
+  hr:         "Tổng Hợp Nhân Sự",
 };
 
 const ROUTE_SECTION: Record<RouteId, string> = {
@@ -97,6 +100,7 @@ const ROUTE_SECTION: Record<RouteId, string> = {
    chatluong:        "Phân tích",
    csat:        "Phân tích",
    overview:        "Phân tích",
+   hr:"Phân tích",
 };
 
 export default function DashboardLayout({ user, onLogout }: Props) {

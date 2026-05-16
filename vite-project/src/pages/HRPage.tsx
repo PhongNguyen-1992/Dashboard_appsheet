@@ -1,7 +1,7 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxpn1qPEOvQoKmPrfNMI-g0X_ap-DFeJiKO-q1ZATEcc5ztQpQ1C-paHA0tb3rXdiMU/exec";
+  "https://script.google.com/macros/s/AKfycbz_duQPJVi_u7ANuqgHtA6on-YvFv-WDRNT4sEst1Y4eGaR9PRRSyRC5_yNhkz79H3S/exec";
 
-export default function VerifiedPage() {
+export default function HRPage() {
   return (
      <iframe
       src={FORM_URL}
@@ -11,7 +11,7 @@ export default function VerifiedPage() {
         border: "none",
         display: "block",
       }}
-      title="KPis Ranking"
+      title="Tổng Hợp Nhân Sự"
     />
   );
 }

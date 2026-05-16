@@ -14,6 +14,7 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { DynamicFormRounded } from "@mui/icons-material";
 
 interface NavItem {
@@ -35,6 +36,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <ManageSearchIcon /> },
   { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
   { id: "data",   label: "Import/Xuất Data",           section: "phan-tich",  icon: <DynamicFormRounded /> },
+  { id: "hr",   label: "Hr Manager",           section: "phan-tich",  icon: <PeopleAltIcon /> },
   { id: "overview",   label: "KPI Overview",           section: "phan-tich",  icon: <AnalyticsRoundedIcon /> },
   { id: "ton",   label: "Tồn Triển Khai Bảo Trì",           section: "phan-tich",  icon: <BarChartRoundedIcon /> },
   { id: "thuhoi",   label: "Thu Hồi Thiết Bị",           section: "phan-tich",  icon: <AssignmentReturnIcon/> },
