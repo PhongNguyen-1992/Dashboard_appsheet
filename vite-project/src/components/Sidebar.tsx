@@ -1,5 +1,5 @@
 import React from "react";
-import type { User } from "../App";
+
 import type { RouteId } from "../layouts/DashboardLayout";
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import DevicesOtherRoundedIcon from '@mui/icons-material/DevicesOtherRounded';
@@ -16,6 +16,7 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { DynamicFormRounded } from "@mui/icons-material";
+import type { User } from "../App";
 
 interface NavItem {
   id: RouteId;
@@ -25,25 +26,29 @@ interface NavItem {
   section: "nghiep-vu" | "he-thong" | "phan-tich";
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { id: "dashboard",  label: "HR Manager",        section: "nghiep-vu", icon: <DashboardRoundedIcon /> },
-  { id: "capthietbi", label: "Đề Xuất Thiết Bị",  section: "nghiep-vu", icon: <DevicesOtherRoundedIcon /> },
-  { id: "capdo",      label: "Cấp Đổi CCDC",      section: "nghiep-vu", icon: <SwapHorizRoundedIcon /> },
-  { id: "recare",     label: "Recare TK-BT",       section: "nghiep-vu", icon: <MonitorHeartRoundedIcon /> },
-  { id: "khongxuly",  label: "Không Xử Lý",        section: "nghiep-vu", icon: <BlockRoundedIcon /> },
-  { id: "swapwf6",  label: "Swap WIFI6",        section: "nghiep-vu", icon: <SwapHorizRoundedIcon /> },
-  { id: "xacminh",   label: "Xác minh",            section: "nghiep-vu", icon: <FactCheckRoundedIcon /> },
-  { id: "activenet",    label: "Tra Cứu AU",       section: "he-thong",  icon: <ManageSearchIcon /> },
-  { id: "thongke",   label: "Thống kê",            section: "he-thong",  icon: <BarChartRoundedIcon /> },
-  { id: "data",   label: "Import/Xuất Data",           section: "phan-tich",  icon: <DynamicFormRounded /> },
-  { id: "hr",   label: "Hr Manager",           section: "phan-tich",  icon: <PeopleAltIcon /> },
-  { id: "overview",   label: "KPI Overview",           section: "phan-tich",  icon: <AnalyticsRoundedIcon /> },
-  { id: "ton",   label: "Tồn Triển Khai Bảo Trì",           section: "phan-tich",  icon: <BarChartRoundedIcon /> },
-  { id: "thuhoi",   label: "Thu Hồi Thiết Bị",           section: "phan-tich",  icon: <AssignmentReturnIcon/> },
-  { id: "tiendo",   label: "Ranking Tiến Độ",           section: "phan-tich",  icon: <TimelineIcon/> },
-  { id: "chatluong",   label: "Ranking Chất Lượng",           section: "phan-tich",  icon: <VerifiedIcon/> },
-  { id: "csat",   label: "Ranking CSAT & HIFPT",           section: "phan-tich",  icon: <RateReviewIcon/> },
+const ALL_NAV_ITEMS: NavItem[] = [
+  { id: "dashboard",  label: "HR Manager",             section: "nghiep-vu",  icon: <DashboardRoundedIcon /> },
+  { id: "capthietbi", label: "Đề Xuất Thiết Bị",       section: "nghiep-vu",  icon: <DevicesOtherRoundedIcon /> },
+  { id: "capdo",      label: "Cấp Đổi CCDC",           section: "nghiep-vu",  icon: <SwapHorizRoundedIcon /> },
+  { id: "recare",     label: "Recare TK-BT",            section: "nghiep-vu",  icon: <MonitorHeartRoundedIcon /> },
+  { id: "khongxuly",  label: "Không Xử Lý",             section: "nghiep-vu",  icon: <BlockRoundedIcon /> },
+  { id: "swapwf6",    label: "Swap WIFI6",               section: "nghiep-vu",  icon: <SwapHorizRoundedIcon /> },
+  { id: "xacminh",    label: "Xác minh",                section: "nghiep-vu",  icon: <FactCheckRoundedIcon /> },
+  { id: "activenet",  label: "Tra Cứu AU",              section: "he-thong",   icon: <ManageSearchIcon /> },
+  { id: "thongke",    label: "Thống kê",                section: "he-thong",   icon: <BarChartRoundedIcon /> },
+  { id: "data",       label: "Import/Xuất Data",        section: "phan-tich",  icon: <DynamicFormRounded /> },
+  { id: "hr",         label: "Hr Manager",              section: "phan-tich",  icon: <PeopleAltIcon /> },
+  { id: "overview",   label: "KPI Overview",            section: "phan-tich",  icon: <AnalyticsRoundedIcon /> },
+  { id: "ton",        label: "Tồn Triển Khai Bảo Trì", section: "phan-tich",  icon: <BarChartRoundedIcon /> },
+  { id: "thuhoi",     label: "Thu Hồi Thiết Bị",        section: "phan-tich",  icon: <AssignmentReturnIcon /> },
+  { id: "tiendo",     label: "Ranking Tiến Độ",         section: "phan-tich",  icon: <TimelineIcon /> },
+  { id: "chatluong",  label: "Ranking Chất Lượng",      section: "phan-tich",  icon: <VerifiedIcon /> },
+  { id: "csat",       label: "Ranking CSAT & HIFPT",    section: "phan-tich",  icon: <RateReviewIcon /> },
+];
 
+// Route doitruong được thấy (phải khớp với ANALYTICS_ROUTES trong DashboardLayout)
+const ANALYTICS_ROUTES: RouteId[] = [
+  "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr",
 ];
 
 interface Props {
@@ -56,9 +61,15 @@ interface Props {
 }
 
 export default function Sidebar({ active, open, user, onNavigate, onToggle, onLogout }: Props) {
-  const nghiepVu = NAV_ITEMS.filter(n => n.section === "nghiep-vu");
-  const heThong  = NAV_ITEMS.filter(n => n.section === "he-thong");
-const phanTich  = NAV_ITEMS.filter(n => n.section === "phan-tich");
+  // Lọc nav theo quyền
+  const navItems = user.access === "all"
+    ? ALL_NAV_ITEMS
+    : ALL_NAV_ITEMS.filter(n => ANALYTICS_ROUTES.includes(n.id));
+
+  const nghiepVu = navItems.filter(n => n.section === "nghiep-vu");
+  const heThong  = navItems.filter(n => n.section === "he-thong");
+  const phanTich = navItems.filter(n => n.section === "phan-tich");
+
   return (
     <div style={{
       width: open ? 220 : 56,
@@ -86,7 +97,7 @@ const phanTich  = NAV_ITEMS.filter(n => n.section === "phan-tich");
           </div>
           {open && (
             <span style={{ fontSize: 13, fontWeight: 700, color: "#fff", whiteSpace: "nowrap" }}>
-              Team Phong
+              Chi Nhánh Sài Gòn 1
             </span>
           )}
         </div>
@@ -109,13 +120,19 @@ const phanTich  = NAV_ITEMS.filter(n => n.section === "phan-tich");
 
       {/* Nav */}
       <div style={{ flex: 1, padding: "10px 8px", overflowY: "auto", overflowX: "hidden" }}>
-        <NavSection label="Nghiệp vụ" open={open} items={nghiepVu} active={active} onNavigate={onNavigate} />
-        <div style={{ marginTop: 8 }}>
-          <NavSection label="Hệ thống" open={open} items={heThong} active={active} onNavigate={onNavigate} />
-        </div>
-        <div style={{ marginTop: 8 }}>
-  <NavSection label="Phân tích" open={open} items={phanTich} active={active} onNavigate={onNavigate} /> {/* ✅ thêm */}
-</div>
+        {nghiepVu.length > 0 && (
+          <NavSection label="Nghiệp vụ" open={open} items={nghiepVu} active={active} onNavigate={onNavigate} />
+        )}
+        {heThong.length > 0 && (
+          <div style={{ marginTop: 8 }}>
+            <NavSection label="Hệ thống" open={open} items={heThong} active={active} onNavigate={onNavigate} />
+          </div>
+        )}
+        {phanTich.length > 0 && (
+          <div style={{ marginTop: 8 }}>
+            <NavSection label="Phân tích" open={open} items={phanTich} active={active} onNavigate={onNavigate} />
+          </div>
+        )}
       </div>
 
       {/* Footer */}
@@ -192,12 +209,8 @@ function NavSection({ label, open, items, active, onNavigate }: {
             key={item.id}
             onClick={() => onNavigate(item.id)}
             title={!open ? item.label : undefined}
-            onMouseEnter={e => {
-              if (!isActive) e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-            }}
-            onMouseLeave={e => {
-              if (!isActive) e.currentTarget.style.background = "transparent";
-            }}
+            onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}
+            onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = "transparent"; }}
             style={{
               display: "flex", alignItems: "center", gap: 10,
               width: "100%", padding: "7px 10px", borderRadius: 8,
@@ -219,7 +232,7 @@ function NavSection({ label, open, items, active, onNavigate }: {
               color: isActive ? "#f97316" : "rgba(255,255,255,0.45)",
               transition: "background 0.15s, color 0.15s",
             }}>
-            {item.icon}
+              {item.icon}
             </div>
             {open && (
               <>

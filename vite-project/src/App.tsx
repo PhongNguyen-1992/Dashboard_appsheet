@@ -2,7 +2,12 @@ import { useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import DashboardLayout from "./layouts/DashboardLayout";
 
-export type User = { username: string; role: string };
+// Thêm access vào User type
+export type User = {
+  username: string;
+  role: string;
+  access: "all" | "analytics";
+};
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);

@@ -35,7 +35,7 @@ export type RouteId =
   | "thuhoi"
   | "tiendo"
   | "chatluong"
-  | "csat"| "overview"| "hr"
+  | "csat" | "overview" | "hr"
   | "activenet";
 
 interface Props {
@@ -55,12 +55,12 @@ const PAGE_MAP = {
   khongxuly:  <Khongxuly />,
   activenet:  <ActivePage />,
   swapwf6:    <SwapPage />,
-  thuhoi:    <ThuHoiPage />,
-  tiendo:    <ProgressPage />,
-  chatluong:    <VerifiedPage />,
-  overview:    <KPIOverview />,
-  csat:    <CsatPage />,
-  hr:    <HRPage />,
+  thuhoi:     <ThuHoiPage />,
+  tiendo:     <ProgressPage />,
+  chatluong:  <VerifiedPage />,
+  overview:   <KPIOverview />,
+  csat:       <CsatPage />,
+  hr:         <HRPage />,
 } satisfies Record<RouteId, React.ReactNode>;
 
 export const ROUTE_LABELS: Record<RouteId, string> = {
@@ -74,13 +74,13 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   thongke:    "Thống kê",
   activenet:  "Active Net",
   swapwf6:    "SWAP WF6",
-  thuhoi:    "Thu Hồi Thiết Bị",
-  tiendo:    "KPIs Tiến Độ Ranking",
-  chatluong:    "KPIs Chất Lượng Ranking",
-  csat:    "KPIs CSAT & HiFPT Ranking",
+  thuhoi:     "Thu Hồi Thiết Bị",
+  tiendo:     "KPIs Tiến Độ Ranking",
+  chatluong:  "KPIs Chất Lượng Ranking",
+  csat:       "KPIs CSAT & HiFPT Ranking",
   data:       "Import/Xuất Data",
   overview:   "Tổng Quan KPIs",
-  hr:         "Tổng Hợp Nhân Sự",
+  hr:         "Tổng Hợp Nhân Sự",
 };
 
 const ROUTE_SECTION: Record<RouteId, string> = {
@@ -95,17 +95,32 @@ const ROUTE_SECTION: Record<RouteId, string> = {
   thongke:    "Hệ thống",
   data:       "Phân tích",
   ton:        "Phân tích",
-   thuhoi:        "Phân tích",
-   tiendo:        "Phân tích",
-   chatluong:        "Phân tích",
-   csat:        "Phân tích",
-   overview:        "Phân tích",
-   hr:"Phân tích",
+  thuhoi:     "Phân tích",
+  tiendo:     "Phân tích",
+  chatluong:  "Phân tích",
+  csat:       "Phân tích",
+  overview:   "Phân tích",
+  hr:         "Phân tích",
 };
 
+// ── Phân quyền: route nào doitruong được phép vào ──────────────
+const ANALYTICS_ROUTES: RouteId[] = [
+  "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr",
+];
+
+function getAllowedDefaultRoute(access: User["access"]): RouteId {
+  return access === "all" ? "dashboard" : "data";
+}
+
 export default function DashboardLayout({ user, onLogout }: Props) {
-  const [route, setRoute] = useState<RouteId>("dashboard");
+  const [route, setRoute]           = useState<RouteId>(getAllowedDefaultRoute(user.access));
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  // Guard: nếu doitruong cố navigate tới route không được phép → không làm gì
+  const handleNavigate = (id: RouteId) => {
+    if (user.access === "analytics" && !ANALYTICS_ROUTES.includes(id)) return;
+    setRoute(id);
+  };
 
   return (
     <div style={{
@@ -118,24 +133,18 @@ export default function DashboardLayout({ user, onLogout }: Props) {
         active={route}
         open={sidebarOpen}
         user={user}
-        onNavigate={setRoute}
+        onNavigate={handleNavigate}
         onToggle={() => setSidebarOpen(!sidebarOpen)}
         onLogout={onLogout}
       />
 
-      <div style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        overflow: "hidden",
-      }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
         <Topbar
           label={ROUTE_LABELS[route]}
           section={ROUTE_SECTION[route]}
           user={user}
           onLogout={onLogout}
         />
-
         <main style={{ flex: 1, overflow: "auto" }}>
           {PAGE_MAP[route]}
         </main>
