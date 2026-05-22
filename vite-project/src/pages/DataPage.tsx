@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxBHpavs6s-jZ9I6wD_uVeY-3Ak7Dx8gvbb1CfNDJjakKux8n9k1XHs5ST5-s12MMci/exec";
+  "https://script.google.com/macros/s/AKfycbzF1afSP79iOy6DRHUjgxEmK3z5HjUYBQQAahGkXGes3hjh00ShIb6K5P-vgy90vNsQ/exec";
 
 export default function DataPage() {
   return (
