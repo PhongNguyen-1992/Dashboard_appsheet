@@ -6,7 +6,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 export type User = {
   username: string;
   role: string;
-  access: "all" | "analytics";
+  access: "all" | "analytics"| "nhanvien";
 };
 
 export default function App() {

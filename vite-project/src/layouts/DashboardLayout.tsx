@@ -107,6 +107,10 @@ const ROUTE_SECTION: Record<RouteId, string> = {
 const ANALYTICS_ROUTES: RouteId[] = [
   "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr",
 ];
+// ── Phân quyền: route nào nhanvien được phép vào ──────────────
+const NHANVIEN_ROUTES: RouteId[] = [
+   "tiendo", "chatluong", "csat", "overview",
+];
 
 function getAllowedDefaultRoute(access: User["access"]): RouteId {
   return access === "all" ? "dashboard" : "data";
@@ -118,10 +122,10 @@ export default function DashboardLayout({ user, onLogout }: Props) {
 
   // Guard: nếu doitruong cố navigate tới route không được phép → không làm gì
   const handleNavigate = (id: RouteId) => {
-    if (user.access === "analytics" && !ANALYTICS_ROUTES.includes(id)) return;
-    setRoute(id);
-  };
-
+  if (user.access === "analytics" && !ANALYTICS_ROUTES.includes(id)) return;
+  if (user.access === "nhanvien"  && !NHANVIEN_ROUTES.includes(id))  return;
+  setRoute(id);
+};
   return (
     <div style={{
       display: "flex",
