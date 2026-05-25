@@ -10,7 +10,7 @@ export default function TonTKBTPage() {
         border: "none",
         display: "block",
       }}
-      title="Tồn Triển Khai Và Bảo Trì"
+      title="Tồn Triển Khai Và Bảo Trì và Nhắc Mail"
     />
   );
 }
