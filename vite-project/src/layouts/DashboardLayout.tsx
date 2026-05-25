@@ -20,6 +20,7 @@ import VerifiedPage from "../pages/VerifiedPage.tsx";
 import CsatPage from "../pages/CsatPage.tsx";
 import KPIOverview from "../pages/KPIOverview.tsx";
 import HRPage from "../pages/HRPage.tsx";
+import KPIOverviewNV from "../pages/KpisOverviewNhanVien.tsx";
 
 export type RouteId =
   | "dashboard"
@@ -35,7 +36,7 @@ export type RouteId =
   | "thuhoi"
   | "tiendo"
   | "chatluong"
-  | "csat" | "overview" | "hr"
+  | "csat" | "overview" | "hr"| "overviewnv"
   | "activenet";
 
 interface Props {
@@ -59,6 +60,7 @@ const PAGE_MAP = {
   tiendo:     <ProgressPage />,
   chatluong:  <VerifiedPage />,
   overview:   <KPIOverview />,
+  overviewnv:   <KPIOverviewNV/>,
   csat:       <CsatPage />,
   hr:         <HRPage />,
 } satisfies Record<RouteId, React.ReactNode>;
@@ -80,6 +82,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   csat:       "KPIs CSAT & HiFPT Ranking",
   data:       "Import/Xuất Data",
   overview:   "Tổng Quan KPIs",
+  overviewnv:   "Tổng Quan KPIs Nhân Viên",
   hr:         "Tổng Hợp Nhân Sự",
 };
 
@@ -100,6 +103,7 @@ const ROUTE_SECTION: Record<RouteId, string> = {
   chatluong:  "Phân tích",
   csat:       "Phân tích",
   overview:   "Phân tích",
+  overviewnv:   "Phân tích",
   hr:         "Phân tích",
 };
 
@@ -109,13 +113,13 @@ const ANALYTICS_ROUTES: RouteId[] = [
 ];
 // ── Phân quyền: route nào nhanvien được phép vào ──────────────
 const NHANVIEN_ROUTES: RouteId[] = [
-   "tiendo", "chatluong", "csat", "overview",
+   "tiendo", "chatluong", "csat", "overviewnv",
 ];
 
 function getAllowedDefaultRoute(access: User["access"]): RouteId {
   if (access === "all")       return "overview";
   if (access === "analytics") return "overview";
-  return "overview"; // nhanvien
+  return "overviewnv"; // nhanvien
 }
 
 export default function DashboardLayout({ user, onLogout }: Props) {
