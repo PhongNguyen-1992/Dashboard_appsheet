@@ -6,6 +6,7 @@ import type { User } from "../App.tsx";
 const USERS: (User & { password: string })[] = [
   { username: "admin",     password: "admin",     role: "Quản trị viên", access: "all"       },
   { username: "doitruong", password: "doitruong", role: "Đội trưởng",    access: "analytics" },
+  { username: "nv", password: "nv", role: "nhanvien",    access: "nhanvien" },
 ];
 
 interface Props {

@@ -50,7 +50,9 @@ const ALL_NAV_ITEMS: NavItem[] = [
 const ANALYTICS_ROUTES: RouteId[] = [
   "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr",
 ];
-
+const NHANVIEN_ROUTES: RouteId[] = [
+  "tiendo", "chatluong", "overview","csat",
+];
 interface Props {
   active: RouteId;
   open: boolean;
@@ -62,10 +64,10 @@ interface Props {
 
 export default function Sidebar({ active, open, user, onNavigate, onToggle, onLogout }: Props) {
   // Lọc nav theo quyền
-  const navItems = user.access === "all"
-    ? ALL_NAV_ITEMS
-    : ALL_NAV_ITEMS.filter(n => ANALYTICS_ROUTES.includes(n.id));
-
+  const navItems =
+  user.access === "all"       ? ALL_NAV_ITEMS :
+  user.access === "analytics" ? ALL_NAV_ITEMS.filter(n => ANALYTICS_ROUTES.includes(n.id)) :
+  ALL_NAV_ITEMS.filter(n => NHANVIEN_ROUTES.includes(n.id));
   const nghiepVu = navItems.filter(n => n.section === "nghiep-vu");
   const heThong  = navItems.filter(n => n.section === "he-thong");
   const phanTich = navItems.filter(n => n.section === "phan-tich");

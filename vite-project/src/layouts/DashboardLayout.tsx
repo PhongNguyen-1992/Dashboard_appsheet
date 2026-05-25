@@ -113,7 +113,9 @@ const NHANVIEN_ROUTES: RouteId[] = [
 ];
 
 function getAllowedDefaultRoute(access: User["access"]): RouteId {
-  return access === "all" ? "dashboard" : "data";
+  if (access === "all")       return "overview";
+  if (access === "analytics") return "overview";
+  return "overview"; // nhanvien
 }
 
 export default function DashboardLayout({ user, onLogout }: Props) {
