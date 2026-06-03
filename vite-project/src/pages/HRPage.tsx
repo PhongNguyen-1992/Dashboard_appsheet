@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbyM1nlKk62ccpJCcAud8kOJz_-yReDUqlRYfrH_5Q70xRLRGlQQVZyrmenPUfptgQRE/exec";
+  "https://script.google.com/macros/s/AKfycbzZzFTyhqsDt4DpTTgdRox46gjnv5Bz6owmHJgbEMqtGexuc9z8VmINgyMZOXywC4ab/exec";
 
 export default function HRPage() {
   return (
