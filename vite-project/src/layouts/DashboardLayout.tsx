@@ -21,6 +21,7 @@ import CsatPage from "../pages/CsatPage.tsx";
 import KPIOverview from "../pages/KPIOverview.tsx";
 import HRPage from "../pages/HRPage.tsx";
 import KPIOverviewNV from "../pages/KpisOverviewNhanVien.tsx";
+import SKNV from "../pages/SKNVPage.tsx";
 
 export type RouteId =
   | "dashboard"
@@ -36,8 +37,8 @@ export type RouteId =
   | "thuhoi"
   | "tiendo"
   | "chatluong"
-  | "csat" | "overview" | "hr"| "overviewnv"
-  | "activenet";
+  | "csat" | "overview" | "hr"| "overviewnv"| "sknv"|
+  "activenet";
 
 interface Props {
   user: User;
@@ -63,6 +64,7 @@ const PAGE_MAP = {
   overviewnv:   <KPIOverviewNV/>,
   csat:       <CsatPage />,
   hr:         <HRPage />,
+  sknv:        <SKNV />,
 } satisfies Record<RouteId, React.ReactNode>;
 
 export const ROUTE_LABELS: Record<RouteId, string> = {
@@ -84,6 +86,7 @@ export const ROUTE_LABELS: Record<RouteId, string> = {
   overview:   "Tổng Quan KPIs",
   overviewnv:   "Tổng Quan KPIs Nhân Viên",
   hr:         "Tổng Hợp Nhân Sự",
+  sknv:        "Sức Khoẻ Nhân Viên",
 };
 
 const ROUTE_SECTION: Record<RouteId, string> = {
@@ -105,11 +108,12 @@ const ROUTE_SECTION: Record<RouteId, string> = {
   overview:   "Phân tích",
   overviewnv:   "Phân tích",
   hr:         "Phân tích",
+  sknv:        "Phân tích",
 };
 
 // ── Phân quyền: route nào doitruong được phép vào ──────────────
 const ANALYTICS_ROUTES: RouteId[] = [
-  "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr",
+  "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr","sknv",
 ];
 // ── Phân quyền: route nào nhanvien được phép vào ──────────────
 const NHANVIEN_ROUTES: RouteId[] = [

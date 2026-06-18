@@ -39,6 +39,7 @@ const ALL_NAV_ITEMS: NavItem[] = [
   { id: "data",       label: "Import/Xuất Data",        section: "phan-tich",  icon: <DynamicFormRounded /> },
   { id: "hr",         label: "Hr Manager",              section: "phan-tich",  icon: <PeopleAltIcon /> },
   { id: "overview",   label: "KPI Overview",            section: "phan-tich",  icon: <AnalyticsRoundedIcon /> },
+  { id: "sknv",        label: "Sức Khỏe Nhân Viên", section: "phan-tich",  icon: <BarChartRoundedIcon /> },
   { id: "ton",        label: "Tồn Triển Khai Bảo Trì", section: "phan-tich",  icon: <BarChartRoundedIcon /> },
   { id: "thuhoi",     label: "Thu Hồi Thiết Bị",        section: "phan-tich",  icon: <AssignmentReturnIcon /> },
   { id: "tiendo",     label: "Ranking Tiến Độ",         section: "phan-tich",  icon: <TimelineIcon /> },
@@ -51,7 +52,7 @@ const ANALYTICS_ROUTES: RouteId[] = [
   "data", "ton", "thuhoi", "tiendo", "chatluong", "csat", "overview", "hr",
 ];
 const NHANVIEN_ROUTES: RouteId[] = [
-  "tiendo", "chatluong", "overview","csat",
+  "tiendo", "chatluong", "overview","csat","sknv",
 ];
 interface Props {
   active: RouteId;
