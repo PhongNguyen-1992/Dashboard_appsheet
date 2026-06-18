@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxCYGzRoTrCVrWQWROg0SWrGVD8xJ-NRthv3AKzZSSMiL9CGBKVrfBAj7GatoHfAEO8QA/exec";
+  "https://script.google.com/macros/s/AKfycbwzXmiG8WqgytTKDdzvrS-omMoAWigdLonXYn-oB9TKpJe6CLCJEhNwotEaQD-O9fUKXw/exec";
 
 export default function KPIOverview() {
   return (
@@ -11,7 +11,7 @@ export default function KPIOverview() {
         border: "none",
         display: "block",
       }}
-      title="Form đề nghị cấp đồ"
+      title="KPIs Overview"
     />
   );
 }
