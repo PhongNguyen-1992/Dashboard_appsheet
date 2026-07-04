@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbw_9pb3NhEDzVpGuDEP4SAKK0wjlx74lnn6AK3vNb_8LxjZjSz1hgH_q9Isd0l5RUoZ/exec";
+  "https://script.google.com/macros/s/AKfycbzNXjSQH-ljlMOEh-YHc5PBTOzl_8NaF4yzUB8dkcwzIYpOZlPfNGxnYE5gL0xANhmS/exec";
 
 export default function ActivePage() {
   return (
@@ -11,7 +11,7 @@ export default function ActivePage() {
         border: "none",
         display: "block",
       }}
-      title="Form đề nghị cấp đồ"
+      title="Tra Cứu AU"
     />
   );
 }
