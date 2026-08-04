@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbw8zPV3HIyaLmGDeabPDRk-ZGlaJKO9PyqSW4nrjGIFPrEpMKMQc01F3IHbeqEYFJI/exec";
+  "https://script.google.com/macros/s/AKfycbxep62RHGG5jXmxrv6uizJZOMZfVxH1Z3spMGgaS8SQ1MHZgKVkrDPbR4IWtg1Yw4M9/exec";
 
 export default function SKNV() {
   return (

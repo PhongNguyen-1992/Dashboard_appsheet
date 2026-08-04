@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { User } from "../App.tsx";
 
-
 // ── Danh sách tài khoản ──────────────────────────────────────────
 const USERS: (User & { password: string })[] = [
   { username: "admin",     password: "admin",     role: "Quản trị viên", access: "all"       },
@@ -40,284 +39,288 @@ export default function LoginPage({ onLogin }: Props) {
     <div style={{
       display: "flex",
       minHeight: "100vh",
-      fontFamily: "'Sora', sans-serif",
-      background: "#f0f3fa",
+      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+      background: "#FFFDF5",
       position: "relative",
     }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        @keyframes fadeUp   { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-        @keyframes spin     { to{transform:rotate(360deg)} }
-        @keyframes orb1     { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(30px,-20px) scale(1.06)} 70%{transform:translate(-15px,25px) scale(0.96)} }
-        @keyframes orb2     { 0%,100%{transform:translate(0,0)} 35%{transform:translate(-25px,15px)} 70%{transform:translate(20px,-20px)} }
-        @keyframes scanline { 0%{top:-60px} 100%{top:110%} }
-        @keyframes shimmer  { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-        @keyframes pulse    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.15)} }
-        @keyframes checkIn  { from{stroke-dashoffset:30} to{stroke-dashoffset:0} }
-
-        .lp-input {
-          width: 100%;
-          padding: 13px 16px 13px 44px;
-          background: #f8fafc;
-          border: 1.5px solid #e2eaf8;
-          border-radius: 12px;
-          color: #0f172a;
-          font-size: 14px;
-          font-family: 'DM Sans', sans-serif;
-          outline: none;
-          transition: border-color .2s, box-shadow .2s, background .2s;
-        }
-        .lp-input::placeholder { color: #c0cce4; }
-        .lp-input:hover  { border-color: #c5d4f0; background: #f4f7fd; }
-        .lp-input:focus  {
-          border-color: #e8271a;
-          background: #fff;
-          box-shadow: 0 0 0 3.5px rgba(232,39,26,.09);
-        }
-        .lp-input.has-right { padding-right: 46px; }
-        .lp-input.err { border-color: #fca5a5; }
-
-        .lp-btn {
-          width: 100%;
-          padding: 14.5px;
-          border: none;
-          border-radius: 13px;
-          font-size: 14px;
-          font-weight: 700;
-          font-family: 'Sora', sans-serif;
-          letter-spacing: .03em;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 9px;
-          position: relative;
-          overflow: hidden;
-          transition: transform .2s, box-shadow .2s, background-position .4s;
-          background: linear-gradient(130deg, #0a2158 0%, #1e40af 45%, #c8201a 100%);
-          background-size: 200% 100%;
-          background-position: 0% 0%;
-          color: #fff;
-          box-shadow: 0 6px 24px rgba(10,33,88,.26), 0 2px 8px rgba(200,32,26,.16);
-          margin-top: 4px;
-        }
-        .lp-btn::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,.13) 0%, transparent 55%);
-          pointer-events: none;
-        }
-        .lp-btn .shimmer {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.14) 50%, transparent 100%);
-          background-size: 200% 100%;
-          animation: shimmer 2.2s linear infinite;
-          pointer-events: none;
-        }
-        .lp-btn:hover:not(:disabled) {
-          background-position: 100% 0%;
-          transform: translateY(-1.5px);
-          box-shadow: 0 10px 32px rgba(10,33,88,.3), 0 4px 12px rgba(200,32,26,.24);
-        }
-        .lp-btn:active:not(:disabled) { transform: translateY(0); box-shadow: 0 4px 16px rgba(10,33,88,.22); }
-        .lp-btn:disabled {
-          background: #e8edf7;
-          color: #94a3b8;
-          cursor: not-allowed;
-          box-shadow: none;
-          transform: none;
-        }
-        .lp-btn.success {
-          background: linear-gradient(130deg, #15803d, #16a34a) !important;
-          box-shadow: 0 6px 24px rgba(21,128,61,.32) !important;
-          background-size: 100% 100% !important;
+        :root {
+          --bg: #FFFDF5;
+          --fg: #1E293B;
+          --muted: #F1F5F9;
+          --muted-fg: #64748B;
+          --accent: #8B5CF6;
+          --accent-fg: #FFFFFF;
+          --secondary: #F472B6;
+          --tertiary: #FBBF24;
+          --quaternary: #34D399;
+          --border: #E2E8F0;
         }
 
-        .eye-btn {
-          position: absolute; right: 13px; top: 50%; transform: translateY(-50%);
-          background: none; border: none; cursor: pointer;
-          color: #94a3b8; padding: 4px; line-height: 0; border-radius: 6px;
-          transition: color .18s;
-        }
-        .eye-btn:hover { color: #475569; }
+        @keyframes popIn    { 0%{opacity:0;transform:scale(.85) translateY(14px)} 70%{transform:scale(1.02) translateY(-2px)} 100%{opacity:1;transform:scale(1) translateY(0)} }
+        @keyframes drift1   { 0%,100%{transform:translate(0,0) rotate(0deg)} 50%{transform:translate(14px,-16px) rotate(8deg)} }
+        @keyframes drift2   { 0%,100%{transform:translate(0,0) rotate(0deg)} 50%{transform:translate(-12px,14px) rotate(-10deg)} }
+        @keyframes spinCW   { to{transform:rotate(360deg)} }
+        @keyframes wiggle   { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(3deg)} 75%{transform:rotate(-3deg)} }
+        @keyframes blink    { 0%,100%{opacity:1} 50%{opacity:.35} }
 
-        .left-panel { display: none; }
-        @media (min-width: 860px) { .left-panel { display: flex !important; } }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+        }
+
+        .pg-label {
+          display:block; font-family:'Outfit',sans-serif; font-weight:700; font-size:11px;
+          letter-spacing:.08em; text-transform:uppercase; color:var(--fg); margin-bottom:8px;
+        }
+
+        .pg-input {
+          width:100%;
+          padding:13px 16px;
+          background:#fff;
+          border:2px solid #CBD5E1;
+          border-radius:14px;
+          color:var(--fg);
+          font-size:14.5px;
+          font-family:'Plus Jakarta Sans',sans-serif;
+          font-weight:500;
+          outline:none;
+          box-shadow:4px 4px 0px 0px transparent;
+          transition: border-color .2s, box-shadow .18s cubic-bezier(.34,1.56,.64,1), transform .18s cubic-bezier(.34,1.56,.64,1);
+        }
+        .pg-input::placeholder { color:#B8C2D6; font-weight:400; }
+        .pg-input.has-icon { padding-left:44px; }
+        .pg-input.has-right { padding-right:46px; }
+        .pg-input:focus {
+          border-color: var(--accent);
+          box-shadow: 4px 4px 0px 0px var(--accent);
+          transform: translate(-2px,-2px);
+        }
+        .pg-input.err {
+          border-color: #DC2626;
+        }
+        .pg-input.err:focus {
+          box-shadow: 4px 4px 0px 0px #DC2626;
+        }
+
+        .pg-eye {
+          position:absolute; right:12px; top:50%; transform:translateY(-50%);
+          background:none; border:none; cursor:pointer; color:var(--muted-fg);
+          padding:4px; line-height:0; border-radius:8px; transition: color .15s;
+        }
+        .pg-eye:hover { color: var(--fg); }
+
+        .pg-btn {
+          width:100%;
+          padding:15px;
+          border:2px solid var(--fg);
+          border-radius:9999px;
+          font-family:'Outfit',sans-serif;
+          font-weight:700;
+          font-size:15px;
+          letter-spacing:.01em;
+          cursor:pointer;
+          display:flex; align-items:center; justify-content:center; gap:9px;
+          background:var(--accent);
+          color:var(--accent-fg);
+          box-shadow:4px 4px 0px 0px var(--fg);
+          transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s cubic-bezier(.34,1.56,.64,1), background .2s;
+        }
+        .pg-btn:hover:not(:disabled) {
+          transform: translate(-2px,-2px);
+          box-shadow: 6px 6px 0px 0px var(--fg);
+        }
+        .pg-btn:active:not(:disabled) {
+          transform: translate(2px,2px);
+          box-shadow: 2px 2px 0px 0px var(--fg);
+        }
+        .pg-btn:disabled {
+          background:#E8EDF7;
+          color:#94A3B8;
+          border-color:#CBD5E1;
+          box-shadow:4px 4px 0px 0px #CBD5E1;
+          cursor:not-allowed;
+        }
+        .pg-btn .icon-dot {
+          width:26px; height:26px; border-radius:50%;
+          background:rgba(255,255,255,.22);
+          display:flex; align-items:center; justify-content:center;
+          flex-shrink:0;
+        }
+
+        .pg-card {
+          animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both;
+        }
+
+        .dot-grid {
+          background-image: radial-gradient(rgba(30,41,59,.16) 1.6px, transparent 1.6px);
+          background-size: 18px 18px;
+        }
+
+        .left-panel { display:none; }
+        @media (min-width: 900px) { .left-panel { display:flex !important; } }
       `}</style>
 
-      {/* ── LEFT PANEL ── */}
+      {/* ── LEFT PANEL: decorative / brand ── */}
       <div
         className="left-panel"
         style={{
-          width: "44%",
+          width: "45%",
           flexDirection: "column",
-          background: "linear-gradient(150deg, #06102e 0%, #0a1e4e 40%, #0d2460 65%, #1a0608 100%)",
-          padding: "40px 38px",
+          background: "#EDE9FE",
+          padding: "44px 40px",
           position: "relative",
           overflow: "hidden",
+          borderRight: "2px solid #1E293B",
         }}
       >
-        {/* Orbs */}
-        {[
-          { w:360, h:360, top:-90, right:-110, bg:"radial-gradient(circle,rgba(232,39,26,.32) 0%,transparent 70%)", anim:"orb1 9s ease-in-out infinite" },
-          { w:220, h:220, bottom:-60, left:-70, bg:"radial-gradient(circle,rgba(26,58,143,.55) 0%,transparent 70%)", anim:"orb2 12s ease-in-out infinite" },
-          { w:140, h:140, top:"42%", left:"38%", bg:"radial-gradient(circle,rgba(232,39,26,.12) 0%,transparent 70%)", anim:"orb1 7s ease-in-out infinite 1.5s" },
-        ].map((o, i) => (
-          <div key={i} style={{
-            position:"absolute", borderRadius:"50%",
-            width:o.w, height:o.h,
-            top:(o as any).top, bottom:(o as any).bottom,
-            left:(o as any).left, right:(o as any).right,
-            background:o.bg, animation:o.anim, pointerEvents:"none",
-          }} />
-        ))}
+        {/* Dot grid backdrop */}
+        <div className="dot-grid" style={{ position:"absolute", inset:0, opacity:.5, pointerEvents:"none" }} />
 
-        {/* Grid */}
+        {/* Giant tertiary circle behind copy */}
         <div style={{
-          position:"absolute", inset:0, pointerEvents:"none",
-          backgroundImage:"linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px)",
-          backgroundSize:"44px 44px",
+          position:"absolute", top:"20%", left:"50%", transform:"translateX(-50%)",
+          width:380, height:380, borderRadius:"50%",
+          background:"var(--tertiary)", opacity:.9,
+          animation:"drift1 10s ease-in-out infinite",
+          pointerEvents:"none",
         }} />
 
-        {/* Scanline */}
-        <div style={{ position:"absolute", inset:0, overflow:"hidden", pointerEvents:"none" }}>
-          <div style={{
-            position:"absolute", left:0, right:0, height:50,
-            background:"linear-gradient(to bottom,transparent,rgba(232,39,26,.045),transparent)",
-            animation:"scanline 7s linear infinite",
-          }} />
-        </div>
+        {/* Confetti shapes */}
+        <div style={{ position:"absolute", top:70, right:56, width:0, height:0,
+          borderLeft:"16px solid transparent", borderRight:"16px solid transparent", borderBottom:"28px solid var(--secondary)",
+          animation:"drift2 8s ease-in-out infinite", pointerEvents:"none" }} />
+        <div style={{ position:"absolute", bottom:120, left:46, width:34, height:34, borderRadius:8,
+          border:"3px solid var(--fg)", background:"var(--quaternary)", transform:"rotate(12deg)",
+          animation:"wiggle 6s ease-in-out infinite", pointerEvents:"none" }} />
+        <div style={{ position:"absolute", bottom:210, right:90, width:20, height:20, borderRadius:"50%",
+          border:"3px solid var(--fg)", background:"#fff",
+          animation:"drift1 7s ease-in-out infinite 1s", pointerEvents:"none" }} />
 
-        {/* Brand */}
-        <div style={{ display:"flex", alignItems:"center", gap:13, position:"relative", zIndex:2 }}>
+        {/* Brand mark */}
+        <div style={{ display:"flex", alignItems:"center", gap:12, position:"relative", zIndex:2 }}>
           <div style={{
-            width:44, height:44, borderRadius:12, overflow:"hidden",
-            background:"#fff", display:"flex", alignItems:"center", justifyContent:"center",
-            boxShadow:"0 0 0 1px rgba(232,39,26,.25), 0 6px 22px rgba(232,39,26,.28)",
-            flexShrink:0, position:"relative",
+            width:46, height:46, borderRadius:14,
+            background:"#fff", border:"2px solid var(--fg)",
+            display:"flex", alignItems:"center", justifyContent:"center",
+            boxShadow:"3px 3px 0px 0px var(--fg)", flexShrink:0,
           }}>
-            <div style={{
-              position:"absolute", inset:-5, borderRadius:17,
-              border:"1.5px solid rgba(232,39,26,.35)",
-              animation:"pulse 3s ease-in-out infinite",
-            }} />
-            {/* FPT Logo text fallback */}
-            <span style={{ fontSize:11, fontWeight:800, color:"#e8271a", position:"relative", zIndex:1 }}>FPT</span>
+            <span style={{ fontFamily:"'Outfit',sans-serif", fontSize:12, fontWeight:800, color:"#E8271A" }}>FPT</span>
           </div>
           <div>
-            <div style={{ fontSize:14, fontWeight:700, color:"#fff", lineHeight:1.15 }}>Chi Nhánh Sài Gòn 01</div>
-            <div style={{ fontSize:10, color:"rgba(255,255,255,.35)", letterSpacing:".16em", textTransform:"uppercase", marginTop:2 }}>FPT Telecom</div>
+            <div style={{ fontFamily:"'Outfit',sans-serif", fontSize:14.5, fontWeight:800, color:"var(--fg)", lineHeight:1.15 }}>Chi Nhánh Sài Gòn 01</div>
+            <div style={{ fontSize:10.5, color:"var(--muted-fg)", letterSpacing:".14em", textTransform:"uppercase", marginTop:2, fontWeight:600 }}>FPT Telecom</div>
           </div>
         </div>
 
-        {/* Center copy */}
+        {/* Centre copy */}
         <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", position:"relative", zIndex:2 }}>
-          <div style={{ fontSize:10, fontWeight:600, color:"#ff6b5b", letterSpacing:".2em", textTransform:"uppercase", marginBottom:14, opacity:.85 }}>
-            Hệ thống nội bộ
+          <div style={{
+            display:"inline-flex", alignSelf:"flex-start", alignItems:"center", gap:7,
+            background:"#fff", border:"2px solid var(--fg)", borderRadius:9999,
+            padding:"6px 14px 6px 10px", marginBottom:18,
+            boxShadow:"3px 3px 0px 0px var(--fg)",
+          }}>
+            <div style={{ width:8, height:8, borderRadius:"50%", background:"var(--quaternary)", border:"1.5px solid var(--fg)", animation:"blink 2.2s ease-in-out infinite" }} />
+            <span style={{ fontSize:11, fontWeight:700, color:"var(--fg)", fontFamily:"'Outfit',sans-serif" }}>Hệ thống nội bộ</span>
           </div>
-          <div style={{ fontSize:33, fontWeight:800, color:"#fff", lineHeight:1.18, marginBottom:16 }}>
+
+          <h1 style={{ fontFamily:"'Outfit',sans-serif", fontSize:36, fontWeight:800, color:"var(--fg)", lineHeight:1.15, marginBottom:16 }}>
             Quản lý<br />
             <span style={{
-              background:"linear-gradient(90deg,#ff6b5b,#ffb347)",
-              WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text",
-            }}>Sài Gòn 01</span>
-          </div>
-          <p style={{ fontSize:13, color:"rgba(255,255,255,.42)", lineHeight:1.9, maxWidth:270, fontFamily:"'DM Sans',sans-serif" }}>
+              position:"relative", display:"inline-block",
+              background:"var(--secondary)", padding:"2px 12px", borderRadius:"12px 12px 12px 0",
+              border:"2px solid var(--fg)", boxShadow:"3px 3px 0px 0px var(--fg)", color:"#fff",
+            }}>
+              Sài Gòn 01
+            </span>
+          </h1>
+
+          <p style={{ fontSize:13.5, color:"#334155", lineHeight:1.85, maxWidth:280, fontWeight:500 }}>
             Nền tảng quản lý nghiệp vụ tập trung — cấp phát thiết bị, kiểm soát tồn kho và xác minh dữ liệu theo thời gian thực.
           </p>
 
-          {/* Feature pills */}
-          <div style={{ display:"flex", flexDirection:"column", gap:9, marginTop:26 }}>
+          <div style={{ display:"flex", flexDirection:"column", gap:10, marginTop:26 }}>
             {[
-              "Cấp phát & thu hồi thiết bị",
-              "Kiểm soát tồn kho theo thời gian",
-              "Báo cáo & phân tích chi nhánh",
-            ].map((t, i) => (
+              { t:"Cấp phát & thu hồi thiết bị", c:"var(--quaternary)" },
+              { t:"Kiểm soát tồn kho theo thời gian", c:"var(--tertiary)" },
+              { t:"Báo cáo & phân tích chi nhánh", c:"var(--secondary)" },
+            ].map((row, i) => (
               <div key={i} style={{
                 display:"flex", alignItems:"center", gap:10,
-                background:"rgba(255,255,255,.05)", border:"1px solid rgba(255,255,255,.08)",
-                borderRadius:10, padding:"9px 14px",
-                fontSize:12, color:"rgba(255,255,255,.6)",
-                fontFamily:"'DM Sans',sans-serif", backdropFilter:"blur(4px)",
+                background:"#fff", border:"2px solid var(--fg)",
+                borderRadius:12, padding:"9px 14px",
+                boxShadow:"2px 2px 0px 0px var(--fg)",
               }}>
-                <div style={{ width:6, height:6, borderRadius:"50%", background:"#ff6b5b", flexShrink:0, boxShadow:"0 0 8px #ff6b5b" }} />
-                {t}
+                <div style={{ width:9, height:9, borderRadius:"50%", background:row.c, border:"1.5px solid var(--fg)", flexShrink:0 }} />
+                <span style={{ fontSize:12.5, color:"var(--fg)", fontWeight:600 }}>{row.t}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div style={{ borderTop:"1px solid rgba(255,255,255,.07)", paddingTop:14, position:"relative", zIndex:2 }}>
-          <span style={{ fontSize:10.5, color:"rgba(255,255,255,.22)", fontFamily:"'DM Sans',sans-serif" }}>
+        <div style={{ position:"relative", zIndex:2, borderTop:"2px dashed rgba(30,41,59,.25)", paddingTop:14 }}>
+          <span style={{ fontSize:10.5, color:"var(--muted-fg)", fontWeight:600 }}>
             © 2025 FPT Telecom — Internal Tools v2.1
           </span>
         </div>
       </div>
 
-      {/* ── RIGHT PANEL ── */}
+      {/* ── RIGHT PANEL: the login card ── */}
       <div style={{
         flex:1, display:"flex", alignItems:"center", justifyContent:"center",
         padding:"32px 24px", position:"relative", overflow:"hidden",
-        background:"linear-gradient(160deg,#ffffff 0%,#f7f9ff 100%)",
       }}>
-        {/* Background blobs */}
-        <div style={{ position:"absolute", top:-60, right:-60, width:200, height:200, borderRadius:"50%", background:"radial-gradient(circle,rgba(232,39,26,.055) 0%,transparent 70%)", pointerEvents:"none" }} />
-        <div style={{ position:"absolute", bottom:-40, left:-40, width:180, height:180, borderRadius:"50%", background:"radial-gradient(circle,rgba(10,33,88,.05) 0%,transparent 70%)", pointerEvents:"none" }} />
+        {/* faint decoration on the light side */}
+        <div className="dot-grid" style={{ position:"absolute", inset:0, opacity:.35, pointerEvents:"none" }} />
+        <div style={{ position:"absolute", top:-50, right:-50, width:170, height:170, borderRadius:"50%",
+          background:"var(--quaternary)", opacity:.22, pointerEvents:"none" }} />
+        <div style={{ position:"absolute", bottom:-40, left:-30, width:150, height:150, borderRadius:24,
+          border:"3px solid var(--fg)", opacity:.08, transform:"rotate(12deg)", pointerEvents:"none" }} />
 
-        <div style={{
-          width:"100%", maxWidth:390,
+        <div className="pg-card" style={{
+          width:"100%", maxWidth:400,
           background:"#fff",
-          border:"1px solid rgba(10,33,88,.08)",
-          borderRadius:20,
-          padding:"40px 36px",
-          boxShadow:"0 8px 48px rgba(10,33,88,.10), 0 1px 3px rgba(10,33,88,.06)",
-          animation:"fadeUp .5s cubic-bezier(.22,.68,0,1.2) both",
+          border:"2px solid var(--fg)",
+          borderRadius:24,
+          padding:"44px 34px 34px",
+          boxShadow:"8px 8px 0px 0px var(--secondary)",
           position:"relative", zIndex:1,
         }}>
-          {/* Card header brand */}
-          <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:28 }}>
-            <div style={{
-              width:37, height:37, borderRadius:10, overflow:"hidden",
-              background:"#fff", border:"1.5px solid #e8edf7",
-              display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0,
-            }}>
-              <span style={{ fontSize:10, fontWeight:800, color:"#e8271a" }}>FPT</span>
-            </div>
-            <div>
-              <div style={{ fontSize:13.5, fontWeight:700, color:"#0a2158" }}>Chi Nhánh Sài Gòn 01</div>
-              <div style={{ fontSize:10, color:"#94a3b8", letterSpacing:".07em", fontFamily:"'DM Sans',sans-serif" }}>FPT TELECOM</div>
-            </div>
-          </div>
-
-          {/* Status badge */}
+          {/* floating icon badge, half-in/half-out of the top border */}
           <div style={{
-            display:"inline-flex", alignItems:"center", gap:7,
-            background:"rgba(232,39,26,.07)", border:"1px solid rgba(232,39,26,.14)",
-            borderRadius:20, padding:"5px 12px 5px 8px", marginBottom:18,
+            position:"absolute", top:-28, left:34,
+            width:56, height:56, borderRadius:16,
+            background:"var(--accent)", border:"2px solid var(--fg)",
+            boxShadow:"3px 3px 0px 0px var(--fg)",
+            display:"flex", alignItems:"center", justifyContent:"center",
           }}>
-            <div style={{ width:7, height:7, borderRadius:"50%", background:"#e8271a", boxShadow:"0 0 8px rgba(232,39,26,.5)", animation:"pulse 2.5s ease-in-out infinite" }} />
-            <span style={{ fontSize:11, fontWeight:600, color:"#e8271a", letterSpacing:".04em", fontFamily:"'DM Sans',sans-serif" }}>Hệ thống đang hoạt động</span>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
           </div>
 
-          <h1 style={{ fontSize:25, fontWeight:800, color:"#0a2158", marginBottom:5 }}>Đăng nhập</h1>
-          <p style={{ fontSize:13, color:"#94a3b8", marginBottom:26, fontFamily:"'DM Sans',sans-serif" }}>Vui lòng nhập thông tin tài khoản của bạn</p>
+          <div style={{ marginTop:14, marginBottom:26 }}>
+            <h1 style={{ fontFamily:"'Outfit',sans-serif", fontSize:26, fontWeight:800, color:"var(--fg)", marginBottom:6 }}>
+              Đăng nhập
+            </h1>
+            <p style={{ fontSize:13.5, color:"var(--muted-fg)", fontWeight:500 }}>
+              Vui lòng nhập thông tin tài khoản của bạn
+            </p>
+          </div>
 
-          <form onSubmit={handleSubmit} style={{ display:"flex", flexDirection:"column", gap:18 }}>
+          <form onSubmit={handleSubmit} style={{ display:"flex", flexDirection:"column", gap:19 }}>
             {/* Username */}
             <div>
-              <label style={{ display:"block", fontSize:11.5, fontWeight:600, color:"#475569", letterSpacing:".05em", textTransform:"uppercase", marginBottom:8 }}>
-                Tài khoản
-              </label>
+              <label className="pg-label">Tài khoản</label>
               <div style={{ position:"relative" }}>
-                <svg style={{ position:"absolute", left:14, top:"50%", transform:"translateY(-50%)", width:16, height:16, pointerEvents:"none", color: focused==="user" ? "#e8271a" : "#94a3b8", transition:"color .2s" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg style={{ position:"absolute", left:14, top:"50%", transform:"translateY(-50%)", width:17, height:17, pointerEvents:"none", color: focused==="user" ? "var(--accent)" : "#94A3B8", transition:"color .18s" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
                 </svg>
                 <input
-                  className={`lp-input`}
+                  className="pg-input has-icon"
                   type="text"
                   placeholder="Nhập tài khoản..."
                   value={username}
@@ -331,15 +334,13 @@ export default function LoginPage({ onLogin }: Props) {
 
             {/* Password */}
             <div>
-              <label style={{ display:"block", fontSize:11.5, fontWeight:600, color:"#475569", letterSpacing:".05em", textTransform:"uppercase", marginBottom:8 }}>
-                Mật khẩu
-              </label>
+              <label className="pg-label">Mật khẩu</label>
               <div style={{ position:"relative" }}>
-                <svg style={{ position:"absolute", left:14, top:"50%", transform:"translateY(-50%)", width:16, height:16, pointerEvents:"none", color: focused==="pass" ? "#e8271a" : "#94a3b8", transition:"color .2s" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg style={{ position:"absolute", left:14, top:"50%", transform:"translateY(-50%)", width:17, height:17, pointerEvents:"none", color: focused==="pass" ? "var(--accent)" : "#94A3B8", transition:"color .18s" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                 </svg>
                 <input
-                  className={`lp-input has-right${error ? " err" : ""}`}
+                  className={`pg-input has-icon has-right${error ? " err" : ""}`}
                   type={showPass ? "text" : "password"}
                   placeholder="Nhập mật khẩu..."
                   value={password}
@@ -347,10 +348,10 @@ export default function LoginPage({ onLogin }: Props) {
                   onFocus={() => setFocused("pass")}
                   onBlur={() => setFocused(null)}
                 />
-                <button type="button" className="eye-btn" onClick={() => setShowPass(!showPass)}>
+                <button type="button" className="pg-eye" onClick={() => setShowPass(!showPass)}>
                   {showPass
-                    ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-                    : <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    : <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   }
                 </button>
               </div>
@@ -360,11 +361,12 @@ export default function LoginPage({ onLogin }: Props) {
             {error && (
               <div style={{
                 display:"flex", alignItems:"center", gap:10,
-                background:"#fff5f5", border:"1px solid #fecaca",
-                borderRadius:10, padding:"11px 14px",
-                color:"#dc2626", fontSize:13, fontFamily:"'DM Sans',sans-serif",
+                background:"#FEF2F2", border:"2px solid #DC2626",
+                borderRadius:12, padding:"11px 14px",
+                boxShadow:"3px 3px 0px 0px #DC2626",
+                color:"#B91C1C", fontSize:13, fontWeight:600,
               }}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink:0 }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink:0 }}>
                   <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
                 </svg>
                 {error}
@@ -372,17 +374,16 @@ export default function LoginPage({ onLogin }: Props) {
             )}
 
             {/* Submit */}
-            <button type="submit" className="lp-btn" disabled={loading}>
-              <div className="shimmer" />
+            <button type="submit" className="pg-btn" disabled={loading}>
               {loading
-                ? <div style={{ width:18, height:18, borderRadius:"50%", border:"2.5px solid rgba(148,163,184,.4)", borderTopColor:"#e2e8f0", animation:"spin .75s linear infinite" }} />
+                ? <div style={{ width:18, height:18, borderRadius:"50%", border:"2.5px solid rgba(255,255,255,.4)", borderTopColor:"#fff", animation:"spinCW .75s linear infinite" }} />
                 : <>
                     Đăng nhập
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                      <polyline points="10 17 15 12 10 7"/>
-                      <line x1="15" y1="12" x2="3" y2="12"/>
-                    </svg>
+                    <span className="icon-dot">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </span>
                   </>
               }
             </button>
@@ -391,21 +392,21 @@ export default function LoginPage({ onLogin }: Props) {
           {/* Footer hint */}
           <div style={{
             marginTop:22, padding:"12px 14px",
-            background:"linear-gradient(135deg,#f0f4ff,#f7f9ff)",
-            border:"1px solid #e0e7ff", borderRadius:11,
+            background:"var(--muted)",
+            border:"2px solid var(--border)", borderRadius:14,
             display:"flex", alignItems:"flex-start", gap:10,
           }}>
             <div style={{
-              width:28, height:28, borderRadius:8, flexShrink:0,
-              background:"linear-gradient(135deg,#0a2158,#1e40af)",
+              width:30, height:30, borderRadius:9, flexShrink:0,
+              background:"var(--tertiary)", border:"2px solid var(--fg)",
               display:"flex", alignItems:"center", justifyContent:"center",
             }}>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
             </div>
-            <p style={{ fontSize:12, color:"#475569", fontFamily:"'DM Sans',sans-serif", lineHeight:1.65, margin:0 }}>
-              Quên mật khẩu? Liên hệ <strong style={{ color:"#0a2158" }}>IT Support PhongNH5</strong> hoặc gọi ext. <strong style={{ color:"#0a2158" }}>033.999.0014</strong>.
+            <p style={{ fontSize:12, color:"#475569", fontWeight:500, lineHeight:1.65, margin:0 }}>
+              Quên mật khẩu? Liên hệ <strong style={{ color:"var(--fg)" }}>IT Support PhongNH5</strong> hoặc gọi ext. <strong style={{ color:"var(--fg)" }}>033.999.0014</strong>.
             </p>
           </div>
         </div>
