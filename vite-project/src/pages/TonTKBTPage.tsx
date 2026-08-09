@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxWRnDqsMmTzpkQA6cMW9JBoP-kJRmuUZeeYw2dV8q6tNXU5PuRyLtfLp0hcbnZaMik/exec"
+  "https://script.google.com/macros/s/AKfycbw0RfWtmokiB_6LzPniM9yJe3pEIsHwuW-fmSx6kRInu1dtVWmIY0sSUqC1I-GCOqWe/exec"
 export default function TonTKBTPage() {
   return (
     <iframe
