@@ -27,7 +27,7 @@ interface NavItem {
 }
 
 const ALL_NAV_ITEMS: NavItem[] = [
-  { id: "dashboard",  label: "HR Manager",             section: "nghiep-vu",  icon: <DashboardRoundedIcon /> },
+  { id: "dashboard",  label: "Kiểm Tra CCDC",             section: "nghiep-vu",  icon: <DashboardRoundedIcon /> },
   { id: "capthietbi", label: "Đề Xuất Thiết Bị",       section: "nghiep-vu",  icon: <DevicesOtherRoundedIcon /> },
   { id: "capdo",      label: "Cấp Đổi CCDC",           section: "nghiep-vu",  icon: <SwapHorizRoundedIcon /> },
   { id: "recare",     label: "Recare TK-BT",            section: "nghiep-vu",  icon: <MonitorHeartRoundedIcon /> },

@@ -1,5 +1,5 @@
 const FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxyL3lHAu8dyLsyUHmG70-R-gMLtOkpBm5KJxTbHtovESGoT09XKlZQX1dim0U6rppnWQ/exec";
+  "https://script.google.com/macros/s/AKfycbwHNeepQOuNLAzWwnkh2hoinOvxF_9FwD_mvgcNvkg-3eH11EEmLOwH-ItinUBmyESM/exec";
 
 export default function DashboardPage() {
   return (
